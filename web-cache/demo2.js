@@ -5,22 +5,20 @@ const app= express();
 
 const moment = require('moment');
 
+
+//直接走强缓存
+
 function getGLNZ(){
   return moment().utc().add(10,'d').format('ddd, DD MMM YYYY HH:mm:ss') + ' GMT';
 }
 
 app.get('/', (req, res) => {
-  res.send(`<!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <title>webCache</title>
-    <link rel="stylesheet" href="/demo.css">
-  </head>
-  <body>
-    Http Cache Demo
-    <script src="/demo.js"></script>
-  </body>
-  </html>`)
+  let htmlPath = path.resolve(__dirname, './static/index.html');
+  const html = fs.readFileSync(htmlPath, 'utf8');
+  res.writeHead(200, {
+      'Content-type': 'text/html'
+  })
+  res.end(html);
 });
 
 app.get('/favicon.ico',(req, res)=>{
@@ -29,19 +27,10 @@ app.get('/favicon.ico',(req, res)=>{
   res.end(cont)
 })
 
-
-app.get('/demo.css',(req, res)=>{
-  let cssPath = path.resolve(__dirname,'./static/css/demo.css');
-  let cont = fs.readFileSync(cssPath);
-  res.setHeader('Expires', getGLNZ())
-  // res.setHeader('Cache-Control', 'public,max-age=10') // 10s
-  res.end(cont)
-})
-
 // 强缓存 - Expires
 app.get('/demo.js',(req, res)=>{
-  let jsPath = path.resolve(__dirname,'./static/js/expires.js');
-  let cont = fs.readFileSync(jsPath);
+  let jsPath = path.resolve(__dirname,'./static/js/demo2.js');
+  let cont = fs.readFileSync(jsPath, 'utf8');
   res.setHeader('Expires', getGLNZ())
   // res.setHeader('Cache-Control', 'public,max-age=10') // 10s
   res.end(cont)

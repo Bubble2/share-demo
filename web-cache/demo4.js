@@ -3,18 +3,15 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
+//先走强缓存，强缓存没有就走协商缓存
 app.get('/', (req, res) => {
-	res.send(`<!DOCTYPE html>
-  <html lang="en">
-  <head>
-		<title>webCache</title>
-  </head>
-  <body>
-		Http Cache Demo
-		<script src="/demo.js"></script>
-  </body>
-  </html>`)
-});
+	let htmlPath = path.resolve(__dirname, './static/index.html');
+	const html = fs.readFileSync(htmlPath, 'utf8');
+	res.writeHead(200, {
+		'Content-type': 'text/html'
+	})
+	res.end(html);
+  });
 
 app.get('/favicon.ico', (req, res) => {
 	let icoPath = path.resolve(__dirname, './static/favicon.ico');
@@ -23,8 +20,8 @@ app.get('/favicon.ico', (req, res) => {
 })
 
 app.get('/demo.js', (req, res) => {
-	let jsPath = path.resolve(__dirname, './static/js/lastMod.js')
-	let cont = fs.readFileSync(jsPath);
+	let jsPath = path.resolve(__dirname, './static/js/demo4.js')
+	let cont = fs.readFileSync(jsPath, 'utf8');
 	let status = fs.statSync(jsPath)
 
 	let lastModified = status.mtime.toUTCString()
