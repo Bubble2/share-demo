@@ -1,1 +1,1 @@
-console.log('直接走强缓存');
+console.log('demo2 expires/max-age');

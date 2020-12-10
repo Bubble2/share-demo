@@ -1,1 +1,1 @@
-console.log('先走强缓存，强缓存没有就走协商缓存');
+console.log('first max-age, then Last-Modified');

@@ -1,1 +1,1 @@
-console.log('无缓存');
+console.log('demo1 no cache');

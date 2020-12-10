@@ -1,1 +1,1 @@
-console.log('直接走协商缓存');
+console.log('demo3 if-none-match/ETag');

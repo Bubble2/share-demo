@@ -29,7 +29,7 @@ app.get('/demo.js', (req, res) => {
 		res.writeHead(304, 'Not Modified')
 		res.end()
 	} else {
-		res.setHeader('Cache-Control', 'public,max-age=5')
+		res.setHeader('Cache-Control', 'public,max-age=10')
 		res.setHeader('Last-Modified', lastModified)
 		res.writeHead(200, 'OK')
 		res.end(cont)
