@@ -1,0 +1,15 @@
+{
+  "name": "demo5-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rollup-demo": "0.0.7",
+    "the-answer": "^1.0.0"
+  }
+}

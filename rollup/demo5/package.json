@@ -1,0 +1,15 @@
+{
+  "name": "rollup-demo",
+  "version": "0.0.7",
+  "description": "",
+  "main": "bundle.js",
+  "module": "bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "the-answer": "^1.0.0"
+  }
+}
