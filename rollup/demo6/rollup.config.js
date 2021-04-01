@@ -6,11 +6,13 @@ export default {
   input: 'src/main.js',
   output: [
     {
+      exports: 'default',
       file: pkg.main,
       format: 'umd',
       name: 'rollupDemo'
     },
     {
+      exports: 'default',
       file: pkg.module,
       format: 'esm'
     }
