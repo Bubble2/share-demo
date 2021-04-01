@@ -5,6 +5,9 @@ export default {
         exports: 'default',
         file: 'bundle.js',
         format: 'umd',
-        name: 'rollupDemo'
+        name: 'rollupDemo',
+        globals: {
+            'the-answer': 'theAnswerToTheQuestionOfLifeTheUniverseAndEverything'
+        }
     }
 }

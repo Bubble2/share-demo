@@ -11,6 +11,7 @@ export default {
   plugins: [ 
     nodeResolve(),
     babel({
+      babelHelpers: 'bundled',
       exclude: 'node_modules/**' // 只编译我们的源代码
     })
    ]
